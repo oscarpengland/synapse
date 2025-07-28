@@ -5,8 +5,16 @@ class Tensor:
     __array_priority__ = 1000.0
 
     def __init__(self, data):
-        arr = np.asarray(data)
-        self.data = arr.copy()
+        """
+        Note that this does not deep copy the data, to do that, the clone() method should be used.
+        """
+        self.data = np.asarray(data)
+
+    def clone(self):
+        """
+        Returns a deep copied new Tensor
+        """
+        return Tensor(self.data.copy())
     
     def __add__(self, other):
         """

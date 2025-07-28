@@ -15,7 +15,6 @@ class FullyConnectedLayer:
         """
         Forward pass through this layer. (Expects each batch to be a column vector)
         """
-        print("Debug")
         return self.weights @ inputs + self.biases
 
     
