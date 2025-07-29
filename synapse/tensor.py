@@ -48,6 +48,13 @@ class Tensor:
         out = Tensor(self.data**other)
         return out
     
+    def __truediv__(self, other):
+        """
+        Elementwise division.
+        """
+        out = self * other**-1.0
+        return out
+    
     def __radd__(self, other):
         return self + other
     
@@ -58,6 +65,10 @@ class Tensor:
         other = other if isinstance(other, Tensor) else Tensor(other)
         return other @ self
     
+    def __rtruediv__(self, other):
+        out = self**-1.0 * other
+        return out
+
     def __neg__(self):
         return Tensor(-self.data)
     
